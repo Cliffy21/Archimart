@@ -1,0 +1,8 @@
+-- db.sql
+
+CREATE TABLE IF NOT EXISTS users (
+    id SERIAL PRIMARY KEY,
+    username VARCHAR(150) UNIQUE NOT NULL,
+    password TEXT NOT NULL,
+    role VARCHAR(50) NOT NULL DEFAULT 'customer'
+);

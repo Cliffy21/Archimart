@@ -1,0 +1,36 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.env
+.env
+.env.*
+*.sqlite3
+instance/
+*.log
+
+# Flask specific
+*.db
+*.sqlite
+*.pkl
+
+# VSCode
+.vscode/
+
+# PyCharm
+.idea/
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Virtual environments
+venv/
+.env/
+.env.bak/
+.venv/
+
+# Git
+*.swp
+*.swo

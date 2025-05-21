@@ -18,7 +18,7 @@ jwt = JWTManager(app)
 
 def get_db():
     """
-    Establishes and returns a new connection to the PostgreSQL database using the configured DATABASE_URL.
+    Establishes and returns a new connection to the PostgreSQL database.
     """
     return psycopg2.connect(app.config['DATABASE_URL'])
 

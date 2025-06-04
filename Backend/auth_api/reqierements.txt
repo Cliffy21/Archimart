@@ -1,5 +1,13 @@
+bcrypt==4.3.0
+blinker==1.9.0
+click==8.1.7
 Flask==2.3.2
 Flask-Bcrypt==1.0.1
+Flask-JWT-Extended==4.7.1
+itsdangerous==2.2.0
+Jinja2==3.1.6
+MarkupSafe==3.0.2
 psycopg2-binary==2.9.6
+PyJWT==2.10.1
 python-dotenv==1.0.0
-click==8.1.7
+Werkzeug==3.1.3

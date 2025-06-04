@@ -6,6 +6,7 @@ CREATE TABLE IF NOT EXISTS users (
     password TEXT NOT NULL,
     role VARCHAR(50) NOT NULL DEFAULT 'customer',
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+<<<<<<< HEAD
 );
 
 
@@ -23,4 +24,6 @@ CREATE TABLE plans (
     designer_id INT REFERENCES users(id),
     created_at TIMESTAMP NOT NULL,
     sales_count INT DEFAULT 0
+=======
+>>>>>>> 5029c96 (Update db.sql)
 );

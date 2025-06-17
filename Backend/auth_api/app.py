@@ -12,6 +12,8 @@ from config import Config
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from dashboards.dashboard import dashboard_bp
+from plans.plans import plans_bp
+
 
 
 
@@ -25,6 +27,8 @@ bcrypt = Bcrypt(app)
 jwt = JWTManager(app)
 
 app.register_blueprint(dashboard_bp)
+app.register_blueprint(plans_bp)
+
 
 def get_db():
     """

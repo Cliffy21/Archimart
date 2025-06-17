@@ -117,3 +117,84 @@ def upload_plan():
         conn.close()
 
     return jsonify(message="Plan uploaded successfully.", plan_id=plan_id, image_urls=image_urls), 201
+
+
+
+@plans_bp.route('/', methods=['GET'])
+def browse_plans():
+    """
+    Public endpoint to browse plans with advanced filtering, search, sort, and pagination.
+    Only shows plans with status='Available'.
+    """
+    conn = get_db()
+    cur = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
+
+    try:
+        search = request.args.get('search', type=str)
+        category = request.args.get('category', type=str)
+        bedrooms = request.args.get('bedrooms', type=int)
+        min_price = request.args.get('min_price', type=float)
+        max_price = request.args.get('max_price', type=float)
+        sort_by = request.args.get('sort_by', default='created_at', type=str)
+        order = request.args.get('order', default='desc', type=str)
+        limit = request.args.get('limit', default=10, type=int)
+        offset = request.args.get('offset', default=0, type=int)
+
+        allowed_sort_fields = ['price', 'sales_count', 'created_at']
+        sort_by = sort_by if sort_by in allowed_sort_fields else 'created_at'
+        order = 'ASC' if order.lower() == 'asc' else 'DESC'
+
+        where_clauses = ["status = 'Available'"]
+        values = []
+
+        if search:
+            where_clauses.append("LOWER(name) LIKE %s")
+            values.append(f"%{search.lower()}%")
+        if category:
+            where_clauses.append("category = %s")
+            values.append(category)
+        if bedrooms is not None:
+            where_clauses.append("bedrooms = %s")
+            values.append(bedrooms)
+        if min_price is not None:
+            where_clauses.append("price >= %s")
+            values.append(min_price)
+        if max_price is not None:
+            where_clauses.append("price <= %s")
+            values.append(max_price)
+
+        where_sql = " AND ".join(where_clauses)
+
+        count_query = f"SELECT COUNT(*) FROM plans WHERE {where_sql};"
+        cur.execute(count_query, tuple(values))
+        total_count = cur.fetchone()[0]
+
+        data_query = f"""
+            SELECT id, name, category, price, area, bedrooms, bathrooms, floors,
+                   sales_count, image_url, created_at
+            FROM plans
+            WHERE {where_sql}
+            ORDER BY {sort_by} {order}
+            LIMIT %s OFFSET %s;
+        """
+        cur.execute(data_query, tuple(values + [limit, offset]))
+        plans = [dict(row) for row in cur.fetchall()]
+
+        return jsonify({
+            "metadata": {
+                "total": total_count,
+                "limit": limit,
+                "offset": offset,
+                "returned": len(plans),
+                "sort_by": sort_by,
+                "order": order
+            },
+            "results": plans
+        }), 200
+
+    except Exception as e:
+        current_app.logger.error(f"Error browsing plans: {e}")
+        return jsonify(error="Something went wrong"), 500
+    finally:
+        cur.close()
+        conn.close()

@@ -1,0 +1,177 @@
+/* GridSection.css */
+
+.grid-section {
+    position: relative;
+    padding: 2rem 0; /* Reduced horizontal padding to allow cards to extend beyond */
+    margin: 0 auto;
+    max-width: 100%; /* Allow full width */
+    overflow-x: hidden; /* Hide horizontal overflow */
+}
+
+.grid-section h2 {
+    font-size: 2rem;
+    color: #010522;
+    text-align: left;
+    margin-bottom: 10px;
+    font-weight: normal;
+    text-transform: none;
+    letter-spacing: 1.5px;
+}
+
+.section-description {
+    text-align: left;
+    margin-bottom: 2rem;
+    padding: 0 1rem;
+}
+
+.grid-row-container {
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    gap: 1.5rem; /* Increased gap between items */
+    padding-bottom: 1.5rem; /* More space for scrollbar */
+    -ms-overflow-style: none; 
+    scrollbar-width: none;
+    margin: 0 -2rem; /* Negative margin to allow overlap with container */
+    padding: 0 2rem; /* Compensate for negative margin */
+}
+
+.grid-row-container::-webkit-scrollbar {
+    display: none; 
+}
+
+.grid-row-item {
+    flex: 0 0 auto;
+    width: 320px; /* Increased width for items */
+    min-height: 400px; /* Increased height */
+    border-radius: 12px; /* Larger radius for more modern look */
+    overflow: hidden;
+    transition: all 0.4s ease;
+    position: relative;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.grid-row-item:hover, .grid-row-item.active {
+    transform: scale(1.05);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+}
+
+.grid-image {
+    width: 100%;
+    height: 100%;
+    min-height: 400px;
+    background-size: cover;
+    background-position: center;
+}
+
+.hover-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.1));
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-end;
+    padding: 2rem;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.grid-row-item:hover .hover-overlay, .grid-row-item.active .hover-overlay {
+    opacity: 1;
+}
+
+.hover-content {
+    transform: translateY(20px);
+    transition: transform 0.4s ease;
+}
+
+.grid-row-item:hover .hover-content, .grid-row-item.active .hover-content {
+    transform: translateY(0);
+}
+
+/* Scroll buttons */
+.scroll-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: white;
+    color: #333;
+    border: none;
+    padding: 1rem;
+    cursor: pointer;
+    opacity: 0.8;
+    transition: all 0.3s ease;
+    z-index: 10;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.scroll-button.left {
+    left: 0.5rem;
+    transform: translate(-30%, -50%);
+}
+
+.scroll-button.right {
+    right: 0.5rem;
+    transform: translate(30%, -50%);
+}
+
+.scroll-button:hover {
+    opacity: 1;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .grid-row-item {
+        width: 280px; /* Still larger than original but appropriate for tablets */
+        min-height: 350px;
+    }
+    
+    .grid-image {
+        min-height: 350px;
+    }
+
+    .scroll-button {
+        width: 40px;
+        height: 40px;
+    }
+    
+    /* Keep active cards clearly visible */
+    .grid-row-item.active {
+        z-index: 5;
+    }
+}
+
+@media (max-width: 480px) {
+    .grid-row-item {
+        width: 240px; /* Still larger than original but appropriate for mobile */
+        min-height: 320px;
+    }
+    
+    .grid-image {
+        min-height: 320px;
+    }
+
+    /* Show scroll buttons on mobile for better UX with larger cards */
+    .scroll-button {
+        width: 35px;
+        height: 35px;
+        opacity: 0.6;
+    }
+    
+    /* Apply active styles for tapped cards */
+    .grid-row-item.active .hover-overlay {
+        opacity: 1;
+    }
+}

@@ -1,0 +1,153 @@
+.blog-section {
+    margin: 50px 0;
+    padding: 0 20px;
+    position: relative;
+}
+
+.blog-section .section-title {
+    font-size: 2rem;
+    text-align: left;
+    margin-bottom: 20px;
+    color: #030125;
+}
+
+/* Horizontal Scroll Container */
+.horizontal-scroll-container {
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    gap: 20px;
+    padding-bottom: 20px;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.horizontal-scroll-container::-webkit-scrollbar {
+    display: none;
+}
+
+/* Scroll Item */
+.horizontal-scroll-item {
+    flex: 0 0 auto;
+    width: 300px;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.horizontal-scroll-item:hover {
+    transform: translateY(-5px);
+}
+
+/* Blog Card */
+.blog-card {
+    position: relative;
+    height: 400px; /* Fixed height for consistency */
+}
+
+.blog-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.horizontal-scroll-item:hover .blog-image {
+    transform: scale(1.1);
+}
+
+/* Blog Info Overlay */
+.blog-info {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    opacity: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    transition: opacity 0.3s ease;
+}
+
+.horizontal-scroll-item:hover .blog-info {
+    opacity: 1;
+}
+
+.blog-title {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.blog-description {
+    font-size: 1rem;
+    text-align: center;
+}
+
+/* Scroll Buttons */
+.scroll-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    border: none;
+    padding: 1rem;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 10;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.scroll-button.left { left: 30px; }
+.scroll-button.right { right: 30px; }
+.scroll-button:hover { background: rgba(0, 0, 0, 0.9); }
+
+.blog-section:hover .scroll-button {
+    opacity: 1;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .horizontal-scroll-item {
+        width: 250px;
+        height: 350px;
+    }
+
+    .blog-title {
+        font-size: 1.2rem;
+    }
+
+    .scroll-button {
+        width: 35px;
+        height: 35px;
+    }
+}
+
+@media (max-width: 480px) {
+    .horizontal-scroll-item {
+        width: 200px;
+        height: 300px;
+    }
+
+    .blog-section .section-title {
+        font-size: 2.5rem;
+    }
+
+    .scroll-button {
+        display: none;
+    }
+}

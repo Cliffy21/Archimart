@@ -1,0 +1,111 @@
+/* Overlay background */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0; /* Align to the left */
+    width: 100%; /* Full-width overlay */
+    height: 100%; /* Full-height overlay */
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center; /* Center form horizontally */
+    align-items: center; /* Center form vertically */
+    z-index: 1000;
+  }
+  
+  /* Form container */
+  .formContainer {
+    background: #ffffff;
+    width: 400px; /* Fixed width */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    animation: slideIn 0.3s ease-in-out;
+  }
+  
+  /* Slide-in animation */
+  @keyframes slideIn {
+    from {
+      transform: translateX(-100%);
+    }
+    to {
+      transform: translateX(0);
+    }
+  }
+  
+  /* Close button */
+  .closeButton {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #020329;
+  }
+  
+  /* Product details */
+  .productDetails {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .productImage {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+  
+  .details h3 {
+    margin: 0;
+    font-size: 1.2rem;
+  }
+  
+  .details p {
+    margin: 0;
+    font-size: 1rem;
+    color: #020329;
+  }
+  
+  /* Form sections */
+  .section {
+    margin-bottom: 20px;
+  }
+  
+  .section h4 {
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+    color: #020329;
+  }
+  
+  /* Custom input styles */
+  .customInput {
+    margin-right: 10px;
+  }
+  
+  .label {
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+  }
+  
+  /* Checkout button */
+  .checkoutButton {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    color: #ffffff;
+    background: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  .checkoutButton:hover {
+    background: #0056b3;
+  }
+  

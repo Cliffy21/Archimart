@@ -1,0 +1,206 @@
+/* ProductCard.module.css - Clean & Simple Version */
+.card {
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  margin-bottom: 16px;
+  position: relative;
+  width: 100%;
+  border: 1px solid #f0f0f0;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.07);
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+/* Image container with consistent aspect ratio */
+.imageContainer {
+  position: relative;
+  width: 100%;
+  padding-top: 70%; /* Slightly less tall than before */
+  overflow: hidden;
+  background-color: #f9f9f9;
+}
+
+.imageWrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.productImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.3s ease;
+}
+
+.card:hover .productImage {
+  transform: scale(1.04);
+}
+
+.loaded {
+  opacity: 1;
+  transition: opacity 0.3s ease-in;
+}
+
+.loading {
+  opacity: 0.5;
+}
+
+/* Hover Buttons Styling - Simplified */
+/* Hover Buttons Styling - Improved version */
+.hoverButtons {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 12px;
+  /* Remove the grayish background */
+  background: transparent; 
+  display: flex;
+  justify-content: center;
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+  z-index: 2;
+}
+
+.card:hover .hoverButtons {
+  transform: translateY(0);
+}
+
+/* Quick Buy Button Styling */
+.actionButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #3b82f6;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-weight: 400;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  width: 80%;
+  /* Add shadow to make button pop against any background */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+}
+
+.actionButton:hover {
+  background-color: #2563eb;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Card Details Styling */
+.cardDetails {
+  padding: 16px;
+}
+
+.productName {
+  font-size: 16px;
+  font-weight: 500; /* Reduced from bold */
+  color: #333333;
+  margin-bottom: 4px;
+  transition: color 0.2s ease;
+}
+
+.card:hover .productName {
+  color: #2563eb;
+}
+
+.productId {
+  font-size: 12px;
+  color: #6b7280;
+  margin-bottom: 6px;
+}
+
+.productPrice {
+  font-size: 16px;
+  font-weight: 500; /* Reduced from bold */
+  color: #2563eb;
+  margin-bottom: 12px;
+}
+
+/* Feature Grid Styling */
+.featuresGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.feature {
+  display: flex;
+  align-items: center;
+  font-size: 13px;
+  color: #4b5563;
+}
+
+.featureIcon {
+  width: 16px;
+  height: 16px;
+  margin-right: 6px;
+  opacity: 0.7;
+}
+
+/* Wishlist Button Styling */
+.wishlistButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  background-color: #f9fafb;
+  border: 1px solid #e5e7eb;
+  color: #4b5563;
+  padding: 8px 0;
+  border-radius: 6px;
+  font-weight: 400;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.wishlistButton:hover {
+  background-color: #f3f4f6;
+  border-color: #d1d5db;
+  color: #2563eb;
+}
+
+.wishlistButton:before {
+  
+  margin-right: 6px;
+  font-size: 15px;
+  transition: transform 0.2s ease;
+}
+
+.wishlistButton:hover:before {
+  
+  color: #2563eb;
+}
+
+/* Overlay for forms */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(2px);
+}

@@ -1,0 +1,199 @@
+/* TopSellingPlans.css */
+
+.top-selling {
+    padding: 40px 20px;
+    background-color:#f8f9fa;
+    position: relative; /* For scroll buttons */
+}
+
+.section-title {
+    font-size: 2rem;
+    text-align: left;
+    margin: 20px 0;
+    color: #030125;
+}
+
+/* Horizontal Scroll Container */
+.horizontal-scroll-container {
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    gap: 24px; /* Increased gap between cards */
+    padding-bottom: 20px; /* Space for scrollbar */
+    -ms-overflow-style: none; /* Hide scrollbar for IE/Edge */
+    scrollbar-width: none; /* Hide scrollbar for Firefox */
+}
+
+.horizontal-scroll-container::-webkit-scrollbar {
+    display: none; /* Hide scrollbar for Chrome/Safari */
+}
+
+/* Scroll Item */
+.horizontal-scroll-item {
+    flex: 0 0 auto;
+    width: 340px; /* Increased from 300px for larger cards */
+    border-radius: 12px; /* Slightly larger radius */
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12); /* Enhanced shadow */
+    background-color: #fff;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-bottom: 10px; /* Add some bottom margin */
+}
+
+.horizontal-scroll-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+}
+
+/* Plan Card Content */
+.plan-card-content {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+/* Plan Image */
+.plan-image {
+    width: 100%;
+    height: 220px; /* Increased from 200px */
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+/* Plan Details - Hover Effect */
+.plan-details {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.7); /* Dark overlay */
+    color: #fff;
+    padding: 15px; /* Increased padding */
+    text-align: center;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+}
+
+/* Plan Details Text */
+.plan-details h3, .plan-details p {
+    margin: 0;
+    font-size: 1.1rem; /* Slightly larger text */
+    font-weight: bold;
+    text-decoration: none; /* Removes underlines */
+}
+
+/* Hover Effects */
+.horizontal-scroll-item:hover .plan-image {
+    transform: scale(1.1); /* Slight zoom on hover */
+}
+
+.horizontal-scroll-item:hover .plan-details {
+    transform: translateY(0); /* Reveal details */
+}
+
+/* Mobile active state for touch devices */
+.horizontal-scroll-item.active .plan-image {
+    transform: scale(1.1);
+}
+
+.horizontal-scroll-item.active .plan-details {
+    transform: translateY(0);
+}
+
+/* Scroll Buttons */
+.scroll-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    border: none;
+    padding: 1rem;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 10;
+    border-radius: 50%;
+    width: 45px; /* Slightly larger buttons */
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.scroll-button.left { left: 10px; }
+.scroll-button.right { right: 10px; }
+.scroll-button:hover { background: rgba(0, 0, 0, 0.9); }
+
+.top-selling:hover .scroll-button {
+    opacity: 1;
+}
+
+/* Mobile tap indicator */
+.tap-indicator {
+    display: none;
+    text-align: center;
+    font-size: 0.8rem;
+    color: #666;
+    padding: 5px 0;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .horizontal-scroll-item {
+        width: 280px; /* Increased from 250px for tablets */
+    }
+
+    .plan-image {
+        height: 200px;
+    }
+
+    .scroll-button {
+        width: 40px;
+        height: 40px;
+    }
+    
+    /* Show tap indicator on mobile */
+    .tap-indicator {
+        display: block;
+    }
+    
+    /* For mobile devices, we'll use a class to toggle the details visibility */
+    .horizontal-scroll-item .plan-details {
+        transform: translateY(100%); /* Hidden by default */
+    }
+    
+    .horizontal-scroll-item.active .plan-details {
+        transform: translateY(0); /* Shown when active class is added */
+    }
+}
+
+@media (max-width: 480px) {
+    .horizontal-scroll-item {
+        width: 260px; /* Increased from 200px for mobile */
+    }
+
+    .plan-image {
+        height: 180px;
+    }
+
+    .scroll-button {
+        display: none; /* Hide buttons on mobile (touch scrolling) */
+    }
+    
+    /* Enhance tap area for mobile */
+    .plan-card-content {
+        padding-bottom: 5px;
+    }
+}
+
+/* Animation for showing details on mobile tap */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.horizontal-scroll-item.active .plan-details {
+    animation: fadeIn 0.3s ease-in-out;
+}

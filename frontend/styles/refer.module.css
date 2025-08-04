@@ -1,0 +1,25 @@
+.referAFriend {
+  text-align: center;
+  padding: 20px;
+}
+
+.iconContainer {
+  margin-bottom: 10px;
+}
+
+.socialIcons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.icon {
+  font-size: 24px;
+  color: #000;
+  transition: color 0.3s ease;
+}
+
+.icon:hover {
+  color: #007bff;
+}

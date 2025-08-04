@@ -1,0 +1,520 @@
+:root {
+  --primary: #0a192f;
+  --accent: #64ffda;  
+  --text: #ccd6f6; 
+  --glass: rgba(10, 25, 47, 0.85);  
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--glass);
+  backdrop-filter: blur(12px);
+  padding: 16px 40px;
+  color: var(--text);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  transition: var(--transition);
+  height: 70px;
+}
+
+.navbar.hidden {
+  transform: translateY(-100%);
+  transition: transform 0.3s ease-in-out;
+}
+
+.navbar .logo img {
+  height: 55px;
+  width: auto;
+  transition: transform 0.3s ease;
+}
+
+.navbar .logo:hover img {
+  transform: scale(1.05);
+}
+
+.navbar-content {
+  display: flex;
+  flex-grow: 1;
+  margin-left: 40px;
+}
+
+.nav-links-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-grow: 1;
+}
+
+.navbar .nav-links {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.navbar .nav-links li {
+  position: relative;
+}
+
+.navbar .nav-links a {
+  color: var(--text);
+  text-decoration: none;
+  font-size: 1.1rem;
+  transition: color 0.3s ease;
+}
+
+.navbar .nav-links a:hover {
+  color: var(--accent);
+}
+
+.navbar-icons {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+/* Common wrapper for all icons to ensure consistent alignment */
+.icon-wrapper, .user-button-wrapper, .hamburger-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  height: 40px; /* Fixed height for all icon containers */
+}
+
+.navbar-icons i {
+  font-size: 1.5rem;
+  color: var(--text);
+  transition: var(--transition);
+  padding: 10px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navbar-icons i:hover {
+  color: var(--accent);
+  background: rgba(100, 255, 218, 0.1);
+}
+
+.search-container {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 30px;
+  overflow: hidden;
+  transition: var(--transition);
+  height: 40px; /* Match height with other icon containers */
+}
+
+.search-container:focus-within {
+  border-color: var(--accent);
+  box-shadow: 0 0 8px rgba(100, 255, 218, 0.3);
+}
+
+.search-icon {
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 12px;
+  color: var(--text);
+  transition: var(--transition);
+}
+
+.search-icon:hover {
+  color: var(--accent);
+  background: rgba(100, 255, 218, 0.1);
+}
+
+#search-bar {
+  padding: 12px 15px;
+  border: none;
+  background: transparent;
+  color: var(--text);
+  font-size: 1rem;
+  outline: none;
+  width: 150px;
+  transition: width 0.5s ease-in-out;
+}
+
+#search-bar::placeholder {
+  color: rgba(204, 214, 246, 0.6);
+}
+
+.search-container:focus-within #search-bar {
+  width: 90px;
+}
+
+.mega-dropdown {
+  position: relative;
+}
+
+.mega-dropdown > a {
+  display: block;
+  padding: 0 15px;
+  line-height: 60px;
+  color: #333;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.mega-dropdown > a:hover {
+  color: #007bff;
+}
+
+.mega-dropdown-content {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 700px; /* Adjust width as needed */
+  background-color: rgba(10, 25, 47, 0.85);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  padding: 20px;
+  z-index: 1000;
+  display: none;
+}
+
+.mega-dropdown:hover .mega-dropdown-content {
+  display: block;
+}
+
+.mega-dropdown-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Three columns for the three categories */
+  gap: 20px;
+}
+
+.mega-dropdown-column {
+  min-width: 200px;
+}
+
+.mega-dropdown-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: white;
+  margin-bottom: 10px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #eee;
+}
+
+.mega-dropdown-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.mega-dropdown-list li {
+  margin-bottom: 8px;
+}
+
+.mega-dropdown-list a {
+  color: #666;
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.2s;
+  display: block;
+  padding: 5px 0;
+}
+
+.mega-dropdown-list a:hover {
+  color: #007bff;
+}
+
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+  .mega-dropdown-content {
+    width: 100%;
+    position: static;
+    box-shadow: none;
+    padding: 10px;
+  }
+  
+  .mega-dropdown-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .mega-dropdown-column {
+    margin-bottom: 15px;
+  }
+}
+
+
+
+/* Dropdown styles */
+.navbar .nav-links .dropdown-menu {
+  display: block;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  visibility: hidden;
+  background: var(--glass);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 0 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  transition: var(--transition);
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 200px;
+}
+
+.navbar .nav-links .dropdown-menu.active,
+.navbar .nav-links .dropdown:hover .dropdown-menu {
+  max-height: 500px;
+  opacity: 1;
+  visibility: visible;
+  padding: 15px;
+  z-index: 1;
+}
+
+.navbar .nav-links .dropdown-menu a {
+  color: var(--text);
+  padding: 10px 20px;
+  border-radius: 8px;
+  margin: 6px 0;
+  display: block;
+  transition: var(--transition);
+}
+
+.navbar .nav-links .dropdown-menu a:hover {
+  background: rgba(100, 255, 218, 0.1);
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.dropdown > a::after {
+  
+  font-size: 0.8em;
+  margin-left: 8px;
+  transition: transform 0.3s ease;
+}
+
+.dropdown.active > a::after {
+  transform: rotate(180deg);
+}
+
+/* Hamburger menu specific styles */
+.hamburger-menu {
+  cursor: pointer;
+  display: none;
+}
+
+.hamburger-menu i {
+  font-size: 1.5rem; /* Match other icons */
+  color: var(--text);
+  transition: var(--transition);
+}
+
+.hamburger-menu.open i {
+  color: var(--accent);
+}
+
+/* Mobile menu container */
+.mobile-menu-container {
+  display: none;
+}
+
+/* Badge styles */
+/* Modern Badge Styling */
+.badge {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  background: linear-gradient(135deg, var(--accent) 0%, #ff7e5f 100%);
+  color: white;
+  font-size: 0.7rem;
+  padding: 0.25rem;
+  min-width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: all 0.2s ease-in-out;
+  transform-origin: center;
+  letter-spacing: -0.2px;
+  border: 1.5px solid rgba(255, 255, 255, 0.3);
+  z-index: 5;
+}
+
+/* Add a subtle pulse animation for new notifications */
+@keyframes badgePulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  }
+  50% {
+    transform: scale(1.08);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  }
+}
+
+/* Apply the animation to badges with the 'new' class */
+.badge.new {
+  animation: badgePulse 1.5s ease-in-out infinite;
+}
+
+/* Hover effect */
+.icon-wrapper:hover .badge,
+.user-button-wrapper:hover .badge,
+.hamburger-wrapper:hover .badge {
+  transform: scale(1.1);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.25);
+}
+
+/* For larger numbers (double digits) */
+.badge.large {
+  min-width: 1.7rem;
+  border-radius: 12px;
+  padding: 0.25rem 0.4rem;
+}
+
+/* For very large numbers, add ellipsis */
+.badge.very-large {
+  min-width: 1.7rem;
+  border-radius: 12px;
+  padding: 0.25rem 0.4rem;
+}
+
+.badge.very-large::after {
+  content: "+";
+  font-size: 0.65rem;
+  margin-left: 1px;
+}
+
+@media (max-width: 1024px) { /* Changed from 768px */
+  .navbar {
+    padding: 16px 20px;
+    height: auto; /* Allow height to adjust if content wraps */
+    min-height: 70px; /* Maintain minimum height */
+    flex-wrap: wrap; /* Allow items to wrap if needed, though JS handles main nav hiding */
+  }
+
+  .logo {
+    /* Adjust flex-basis if needed, or let it size naturally */
+    /* flex-basis: 50%; */ 
+    margin-right: auto; /* Push icons to the right */
+  }
+
+  /* 
+    The .navbar-content (desktop nav links) is now hidden by JavaScript 
+    based on the isTabletOrMobile state (window.innerWidth < 1024).
+    So, `display: none;` here for .navbar-content is redundant if JS handles it,
+    but can be kept as a fallback or if CSS-only hiding is preferred for some scenarios.
+    However, since JS is already doing it, we can rely on that.
+  */
+  /* .navbar-content {
+    display: none; 
+  } */
+
+  .navbar-icons {
+    /* Adjust flex-basis if needed, or let it size naturally */
+    /* flex-basis: 50%; */
+    justify-content: flex-end;
+    gap: 15px; /* Adjust gap for tablet if needed */
+  }
+  
+  /* 
+    The .hamburger-menu is made visible by JavaScript by rendering it.
+    The `display: flex` here ensures it's styled correctly when rendered.
+    The initial `display: none` for .hamburger-menu (outside this media query)
+    is for desktop view.
+  */
+  .hamburger-menu {
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* Ensure consistent height for all icon containers */
+  .icon-wrapper, .user-button-wrapper, .hamburger-wrapper {
+    height: 40px;
+  }
+  
+  /* 
+    The .mobile-menu-container is made visible by JavaScript when the hamburger is clicked.
+    The `display: block` here ensures it's styled correctly when rendered.
+  */
+  .mobile-menu-container {
+    display: block; 
+    width: 100%;
+    flex-basis: 100%; /* Make it take full width when it appears */
+    margin-top: 15px;
+    padding: 10px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  /* Mobile nav links styling (applies when .nav-links.mobile is rendered) */
+  .navbar .nav-links.mobile {
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+  }
+  
+  .navbar .nav-links.mobile li {
+    width: 100%;
+    margin-bottom: 8px;
+  }
+  
+  .navbar .nav-links.mobile a {
+    display: block;
+    padding: 12px;
+    width: 100%;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.05);
+  }
+  
+  .navbar .nav-links.mobile .dropdown-menu {
+    position: static; /* Overrides absolute positioning from desktop */
+    width: 100%;
+    box-shadow: none;
+    border: none;
+    background: transparent;
+    margin-left: 15px; /* Indent dropdown items */
+    /* Resetting properties from desktop dropdown */
+    max-height: none; 
+    opacity: 1;
+    visibility: visible;
+    padding: 0; 
+  }
+  
+  .navbar .nav-links.mobile .dropdown-menu a {
+    padding: 10px; /* Specific padding for mobile dropdown items */
+  }
+  
+  /* Adjust search container for tablet/mobile */
+  .search-container {
+    margin-left: 0;
+     width: auto; /* Allow it to size based on content or specific width below */
+    /* Example: make it take more available space if desired */
+     flex-grow: 1; 
+    margin-left: 15px; 
+  }
+  
+  #search-bar {
+    width: 100px; /* Or adjust as needed for tablet */
+  }
+  
+  .search-container:focus-within #search-bar {
+    width: 100px; /* Or adjust as needed for tablet */
+  }
+}

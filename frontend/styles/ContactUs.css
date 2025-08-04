@@ -1,0 +1,424 @@
+.contact-slider-container {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    padding: 60px 20px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .contact-slider-container::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    right: -50px;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: rgba(8, 0, 156, 0.05);
+    z-index: 0;
+  }
+  
+  .contact-slider-container::after {
+    content: '';
+    position: absolute;
+    bottom: -30px;
+    left: -30px;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background: rgba(8, 0, 156, 0.03);
+    z-index: 0;
+  }
+  
+  .contact-slider-header {
+    text-align: center;
+    margin-bottom: 40px;
+    position: relative;
+    z-index: 2;
+  }
+  
+  .contact-slider-header h2 {
+    font-size: 32px;
+    font-weight: 700;
+    color: #020931;
+    margin-bottom: 8px;
+    position: relative;
+    display: inline-block;
+  }
+  
+  .contact-slider-header h2::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: #08009c;
+    border-radius: 2px;
+  }
+  
+  .contact-slider-header p {
+    color: #4a5568;
+    font-size: 16px;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .slider-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    perspective: 1000px;
+  }
+  
+  .contact-swiper {
+    width: 100%;
+    padding-top: 20px;
+    padding-bottom: 60px;
+    overflow: visible;
+  }
+  
+  .contact-slide {
+    width: 320px;
+    height: 380px;
+    background: white;
+    border-radius: 16px;
+    padding: 30px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1), 0 5px 15px rgba(0, 0, 0, 0.05);
+    transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+    overflow: hidden;
+    position: relative;
+    transform-origin: center;
+    transform-style: preserve-3d;
+  }
+  
+  .contact-slide::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 6px;
+    background: linear-gradient(to right, #08009c, #1a73e8);
+    border-radius: 6px 6px 0 0;
+  }
+  
+  .slide-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    position: relative;
+    z-index: 2;
+  }
+  
+  .icon-circle {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #e6f0ff 0%, #f0f7ff 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+    box-shadow: 0 6px 12px rgba(24, 90, 219, 0.1);
+    border: 2px solid rgba(8, 0, 156, 0.1);
+  }
+  
+  .main-icon {
+    font-size: 26px;
+    color: #08009c;
+  }
+  
+  .slide-content h3 {
+    font-size: 20px;
+    font-weight: 600;
+    color: #020931;
+    margin: 0 0 12px;
+    text-align: center;
+  }
+  
+  .slide-description {
+    font-size: 14px;
+    color: #4a5568;
+    text-align: center;
+    margin-bottom: 24px;
+    line-height: 1.5;
+  }
+  
+  /* Customer Service Slide */
+  .contact-info {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 15px;
+    background-color: #f8fafc;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+  }
+  
+  .contact-item:hover {
+    background-color: #e6f0ff;
+    transform: translateY(-3px);
+  }
+  
+  .contact-icon {
+    color: #08009c;
+    font-size: 16px;
+  }
+  
+  .contact-link, .contact-text {
+    color: #4a5568;
+    font-size: 14px;
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+  
+  .contact-link:hover {
+    color: #08009c;
+    text-decoration: underline;
+  }
+  
+  /* Payment Methods Slide */
+  .payment-methods {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 10px;
+  }
+  
+  .payment-method {
+    background-color: #f1f5f9;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    color: #1e293b;
+    transition: all 0.3s ease;
+    border: 1px solid #e2e8f0;
+  }
+  
+  .payment-method:hover {
+    background-color: #e6f0ff;
+    color: #08009c;
+    border-color: #cbd5e1;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  }
+  
+  /* Social Sharing Slide */
+  .social-icons {
+    display: flex;
+    gap: 15px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .social-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 18px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .referral-code {
+    margin-top: 20px;
+    background: linear-gradient(135deg, #f0f7ff 0%, #e6f0ff 100%);
+    padding: 12px 20px;
+    border-radius: 8px;
+    border: 1px dashed #cbd5e1;
+    color: #4a5568;
+    font-size: 14px;
+    text-align: center;
+  }
+  
+  .referral-code .code {
+    font-weight: 600;
+    color: #08009c;
+    letter-spacing: 1px;
+    padding: 2px 8px;
+    background-color: white;
+    border-radius: 4px;
+    margin-left: 6px;
+    display: inline-block;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  }
+  
+  /* Custom Navigation */
+  .custom-navigation {
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    z-index: 10;
+    pointer-events: none;
+    padding: 0 20px;
+  }
+  
+  .nav-button {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.9);
+    border: none;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: #08009c;
+    font-size: 24px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    pointer-events: auto;
+    opacity: 0.7;
+  }
+  
+  .nav-button:hover {
+    background-color: #08009c;
+    color: white;
+    opacity: 1;
+    transform: scale(1.1);
+  }
+  
+  .nav-button:focus {
+    outline: none;
+  }
+  
+  .nav-button.prev {
+    left: 10px;
+  }
+  
+  .nav-button.next {
+    right: 10px;
+  }
+  
+  /* Custom Swiper Pagination */
+  .swiper-pagination {
+    position: absolute;
+    bottom: 10px !important;
+  }
+  
+  .custom-bullet {
+    width: 10px;
+    height: 10px;
+    background-color: #d1d5db;
+    opacity: 1;
+    margin: 0 5px;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+  }
+  
+  .custom-bullet.active-bullet {
+    width: 30px;
+    background-color: #08009c;
+  }
+  
+  /* 3D Coverflow Effect Styling */
+  .swiper-slide-active {
+    z-index: 10;
+  }
+  
+  .swiper-slide-next, .swiper-slide-prev {
+    opacity: 0.7;
+  }
+  
+  /* Enhance the 3D effect with perspective and transform */
+  .swiper-wrapper {
+    perspective: 1200px;
+  }
+  
+  .swiper-slide {
+    transform-style: preserve-3d;
+    transition: transform 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+  }
+  
+  /* Responsive Styles */
+  @media (max-width: 768px) {
+    .contact-slider-container {
+      padding: 40px 15px;
+    }
+    
+    .contact-slider-header h2 {
+      font-size: 28px;
+    }
+    
+    .contact-slide {
+      width: 280px;
+      height: 360px;
+      padding: 25px 20px;
+    }
+    
+    .icon-circle {
+      width: 60px;
+      height: 60px;
+    }
+    
+    .main-icon {
+      font-size: 22px;
+    }
+    
+    .nav-button {
+      width: 36px;
+      height: 36px;
+      font-size: 20px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .contact-slider-header h2 {
+      font-size: 24px;
+    }
+    
+    .contact-slider-header p {
+      font-size: 14px;
+    }
+    
+    .contact-slide {
+      width: 260px;
+      height: 340px;
+    }
+    
+    .slide-content h3 {
+      font-size: 18px;
+    }
+    
+    .payment-methods {
+      gap: 8px;
+    }
+    
+    .payment-method {
+      padding: 6px 12px;
+      font-size: 13px;
+    }
+    
+    .social-icon {
+      width: 36px;
+      height: 36px;
+      font-size: 16px;
+    }
+    
+    .nav-button {
+      width: 32px;
+      height: 32px;
+      font-size: 18px;
+    }
+  }
